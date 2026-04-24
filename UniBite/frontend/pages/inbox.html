@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Εισερχόμενα Αιτήματα – UniBite</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark">U</span> UniBite</a>
+    <button class="nav-toggle" aria-label="Μενού" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="nav-links"></div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="section-title">
+    <h2>Εισερχόμενα Αιτήματα</h2>
+    <div class="tabs">
+      <button class="tab active" data-filter="pending">Εκκρεμή</button>
+      <button class="tab" data-filter="approved">Εγκεκριμένα</button>
+      <button class="tab" data-filter="picked_up">Παραδόθηκαν</button>
+      <button class="tab" data-filter="rejected">Απορρίφθηκαν</button>
+      <button class="tab" data-filter="no_show">No-show</button>
+      <button class="tab" data-filter="all">Όλα</button>
+    </div>
+  </div>
+
+  <div id="empty-msg" class="alert alert-info hidden">Δεν υπάρχουν αιτήματα σε αυτή την κατηγορία.</div>
+  <div id="requests-table-wrap"></div>
+</main>
+
+<div id="toast-container"></div>
+<script src="../js/common.js"></script>
+<script src="../js/requests.js"></script>
+</body>
+</html>

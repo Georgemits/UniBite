@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="UniBite logo">
+  <circle cx="32" cy="32" r="30" fill="#f97316"/>
+  <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Segoe UI, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#ffffff">U</text>
+</svg>

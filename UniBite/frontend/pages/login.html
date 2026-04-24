@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Σύνδεση – UniBite</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark">U</span> UniBite</a>
+    <div class="nav-links">
+      <a href="register.html">Εγγραφή</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <h2>Σύνδεση στο UniBite</h2>
+      <form id="login-form" class="form-grid" novalidate>
+        <div class="field">
+          <label for="identifier">Όνομα χρήστη ή email</label>
+          <input id="identifier" name="identifier" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="password">Κωδικός</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required minlength="6">
+        </div>
+        <div id="login-err" class="alert alert-danger hidden"></div>
+        <button class="btn btn-primary btn-block" type="submit">Σύνδεση</button>
+      </form>
+      <p class="muted mt-3 text-center">Δεν έχεις λογαριασμό; <a href="register.html">Εγγράψου</a></p>
+      <div class="alert alert-info mt-3 text-sm">
+        <strong>Demo:</strong><br>
+        Μάγειρας: <code>maria</code> · <code>test123</code><br>
+        Καταναλωτής: <code>sofia</code> · <code>test123</code><br>
+        Admin: <code>admin</code> · <code>admin123</code>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toast-container"></div>
+<script src="../js/common.js"></script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

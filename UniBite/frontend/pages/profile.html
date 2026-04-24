@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Προφίλ & Πόντοι – UniBite</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark">U</span> UniBite</a>
+    <button class="nav-toggle" aria-label="Μενού" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="nav-links"></div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="section-title"><h2>Προφίλ</h2></div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Πόντοι</div>
+      <div class="value" id="kpi-points">–</div>
+      <div class="sub">+1/αξιολόγηση · +1 επιπλέον αν &gt; 3/5</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Μερίδες που έδωσα</div>
+      <div class="value" id="kpi-given">–</div>
+      <div class="sub">Ολοκληρωμένες παραλαβές</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Μερίδες που πήρα</div>
+      <div class="value" id="kpi-received">–</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Μέση αξιολόγηση (ως μάγειρας)</div>
+      <div class="value" id="kpi-avg">–</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>Στοιχεία λογαριασμού</h3>
+      <div id="user-meta" class="text-muted"></div>
+    </div>
+  </div>
+
+  <div class="section-title mt-4"><h2>Ιστορικό πόντων</h2></div>
+  <div id="tx-wrap"></div>
+</main>
+
+<div id="toast-container"></div>
+<script src="../js/common.js"></script>
+<script src="../js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Οι Αγγελίες μου – UniBite</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark">U</span> UniBite</a>
+    <button class="nav-toggle" aria-label="Μενού" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="nav-links"></div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="section-title">
+    <h2>Οι Αγγελίες μου</h2>
+    <button class="btn btn-primary" id="new-listing-btn">+ Νέα αγγελία</button>
+  </div>
+
+  <div id="mine-empty" class="alert alert-info hidden">
+    Δεν έχεις ακόμη καμία αγγελία. Πάτησε «Νέα αγγελία» για να ξεκινήσεις.
+  </div>
+  <div id="mine-grid" class="grid"></div>
+</main>
+
+<!-- Modal: Δημιουργία / Επεξεργασία αγγελίας -->
+<div class="modal-backdrop" id="listing-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="lm-title">Νέα αγγελία</h3>
+      <button class="modal-close" data-close>×</button>
+    </div>
+    <div class="modal-body">
+      <form id="listing-form" class="form-grid form-grid-2" novalidate>
+        <input type="hidden" name="id" id="lf-id">
+        <div class="field span-2">
+          <label for="lf-title">Τίτλος φαγητού *</label>
+          <input id="lf-title" name="title" required maxlength="150" placeholder="π.χ. Παστίτσιο με μοσχάρι">
+        </div>
+        <div class="field span-2">
+          <label for="lf-notes">Σημειώσεις</label>
+          <textarea id="lf-notes" name="notes" rows="3" placeholder="Ελεύθερο κείμενο με λεπτομέρειες"></textarea>
+        </div>
+        <div class="field">
+          <label for="lf-photo">URL φωτογραφίας (προαιρετικό)</label>
+          <input id="lf-photo" name="photo_url" type="url" placeholder="https://…">
+        </div>
+        <div class="field">
+          <label for="lf-portions">Μερίδες *</label>
+          <input id="lf-portions" name="portions" type="number" min="1" max="100" required value="4">
+        </div>
+        <div class="field span-2">
+          <label>Αλλεργιογόνα (EUFIC)</label>
+          <div id="lf-allergens" class="allergen-list"></div>
+        </div>
+        <div class="field span-2">
+          <label for="lf-location">Σημείο παραλαβής *</label>
+          <input id="lf-location" name="pickup_location" required placeholder="π.χ. Εστίες Κτήριο Α, Δωμ. 312">
+        </div>
+        <div class="field">
+          <label for="lf-lat">Γεωγραφικό πλάτος *</label>
+          <input id="lf-lat" name="pickup_lat" type="number" step="0.0000001" required value="38.2880">
+        </div>
+        <div class="field">
+          <label for="lf-lng">Γεωγραφικό μήκος *</label>
+          <input id="lf-lng" name="pickup_lng" type="number" step="0.0000001" required value="21.7900">
+        </div>
+        <div class="field span-2">
+          <small>💡 Σύρε τον δείκτη στον χάρτη για να επιλέξεις σημείο.</small>
+          <div id="lf-map" style="height:260px; border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200)"></div>
+        </div>
+        <div class="field">
+          <label for="lf-t1">Ώρα παραλαβής - από *</label>
+          <input id="lf-t1" name="pickup_time_start" type="datetime-local" required>
+        </div>
+        <div class="field">
+          <label for="lf-t2">Ώρα παραλαβής - έως *</label>
+          <input id="lf-t2" name="pickup_time_end" type="datetime-local" required>
+        </div>
+        <div id="lf-err" class="alert alert-danger hidden span-2"></div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" data-close>Ακύρωση</button>
+      <button class="btn btn-primary" id="lf-submit">Αποθήκευση</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="../js/common.js"></script>
+<script src="../js/listings.js"></script>
+</body>
+</html>

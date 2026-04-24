@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Εγγραφή – UniBite</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark">U</span> UniBite</a>
+    <div class="nav-links">
+      <a href="login.html">Σύνδεση</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <h2>Δημιουργία λογαριασμού</h2>
+      <p class="muted text-center" style="margin-top:-.8rem">Οι νέοι χρήστες λαμβάνουν αυτόματα <strong>5 πόντους</strong>.</p>
+      <form id="register-form" class="form-grid" novalidate>
+        <div class="field">
+          <label for="full_name">Ονοματεπώνυμο</label>
+          <input id="full_name" name="full_name" required>
+        </div>
+        <div class="field">
+          <label for="username">Όνομα χρήστη</label>
+          <input id="username" name="username" minlength="3" maxlength="50" required>
+        </div>
+        <div class="field">
+          <label for="email">Πανεπιστημιακό email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="password">Κωδικός (τουλάχιστον 6 χαρακτήρες)</label>
+          <input id="password" name="password" type="password" minlength="6" required>
+        </div>
+        <div id="reg-err" class="alert alert-danger hidden"></div>
+        <button class="btn btn-primary btn-block" type="submit">Εγγραφή</button>
+      </form>
+      <p class="muted mt-3 text-center">Έχεις ήδη λογαριασμό; <a href="login.html">Σύνδεση</a></p>
+    </div>
+  </div>
+</main>
+
+<div id="toast-container"></div>
+<script src="../js/common.js"></script>
+<script src="../js/auth.js"></script>
+</body>
+</html>

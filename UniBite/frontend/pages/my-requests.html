@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Τα Αιτήματά μου – UniBite</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark">U</span> UniBite</a>
+    <button class="nav-toggle" aria-label="Μενού" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="nav-links"></div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="section-title">
+    <h2>Τα Αιτήματά μου</h2>
+    <div class="tabs">
+      <button class="tab active" data-filter="pending">Εκκρεμή</button>
+      <button class="tab" data-filter="approved">Εγκεκριμένα</button>
+      <button class="tab" data-filter="picked_up">Παραλήφθηκαν</button>
+      <button class="tab" data-filter="rejected">Απορρίφθηκαν</button>
+      <button class="tab" data-filter="all">Όλα</button>
+    </div>
+  </div>
+
+  <div id="empty-msg" class="alert alert-info hidden">Δεν έχεις υποβάλει αιτήματα.</div>
+  <div id="outbox-wrap"></div>
+</main>
+
+<!-- Modal: Αξιολόγηση -->
+<div class="modal-backdrop" id="rate-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Βαθμολόγηση μερίδας</h3>
+      <button class="modal-close" data-close>×</button>
+    </div>
+    <div class="modal-body">
+      <p id="rate-listing-title" class="muted"></p>
+      <form id="rate-form" class="form-grid">
+        <input type="hidden" id="rate-rid">
+        <div class="field">
+          <label>Πόσα αστέρια δίνεις;</label>
+          <div class="rating-picker" id="rating-picker">
+            <label data-val="1"><input type="radio" name="stars" value="1">★</label>
+            <label data-val="2"><input type="radio" name="stars" value="2">★</label>
+            <label data-val="3"><input type="radio" name="stars" value="3">★</label>
+            <label data-val="4"><input type="radio" name="stars" value="4">★</label>
+            <label data-val="5"><input type="radio" name="stars" value="5">★</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="rate-comment">Σχόλιο (προαιρετικό)</label>
+          <textarea id="rate-comment" rows="3" maxlength="500" placeholder="Πώς σου φάνηκε;"></textarea>
+        </div>
+        <div id="rate-err" class="alert alert-danger hidden"></div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" data-close>Άκυρο</button>
+      <button class="btn btn-primary" id="rate-submit">Αποστολή αξιολόγησης</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<script src="../js/common.js"></script>
+<script src="../js/my-requests.js"></script>
+</body>
+</html>

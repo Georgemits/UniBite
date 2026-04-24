@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard – UniBite</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark">U</span> UniBite</a>
+    <button class="nav-toggle" aria-label="Μενού" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="nav-links"></div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="section-title"><h2>Admin Dashboard</h2></div>
+
+  <div class="kpi-grid" id="kpi-grid">
+    <div class="kpi"><div class="label">Μερίδες (τελ. μήνας)</div><div class="value" id="k-shared">–</div><div class="sub">Επιτυχώς διαμοιρασμένες</div></div>
+    <div class="kpi"><div class="label">Ενεργές αγγελίες</div><div class="value" id="k-active">–</div><div class="sub">&lt; 48h με μερίδες</div></div>
+    <div class="kpi"><div class="label">Συνολικοί χρήστες</div><div class="value" id="k-users">–</div></div>
+    <div class="kpi"><div class="label">Αξιολογήσεις</div><div class="value" id="k-ratings">–</div><div class="sub">Μ.Ο. <span id="k-avg">–</span>/5</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>Μερίδες ανά ημέρα (30 ημέρες)</h3>
+      <canvas id="chart-daily" height="110"></canvas>
+    </div>
+  </div>
+
+  <div class="section-title mt-4"><h2>Top Donors</h2></div>
+  <div id="donors-wrap"></div>
+
+  <div class="section-title mt-4"><h2>Κορυφαία γεύματα (βάσει rating)</h2></div>
+  <div id="top-listings-wrap"></div>
+
+  <div class="section-title mt-4"><h2>Κορυφαίοι παραλήπτες</h2></div>
+  <div id="receivers-wrap"></div>
+</main>
+
+<div id="toast-container"></div>
+<script src="../js/common.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>

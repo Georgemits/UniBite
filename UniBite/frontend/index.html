@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UniBite – Φοιτητικό Food Sharing</title>
+<meta name="description" content="Η φοιτητική πλατφόρμα διαμοιρασμού φαγητού της πανεπιστημιακής κοινότητας.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">U</span> UniBite
+    </a>
+    <button class="nav-toggle" aria-label="Μενού" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="pages/feed.html">Αγγελίες</a>
+      <a href="pages/login.html">Σύνδεση</a>
+      <a href="pages/register.html" class="btn btn-primary btn-sm" style="margin-left:.5rem">Εγγραφή</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h1>Μαγείρεψε, μοιράσου, απόλαυσε</h1>
+      <p>
+        Το <strong>UniBite</strong> συνδέει φοιτητές που έχουν περισσευούμενες μερίδες φαγητού με συμφοιτητές
+        που αναζητούν ένα σπιτικό γεύμα. Μοίρασε μια μερίδα, κέρδισε πόντους και μπες στην κοινότητα.
+      </p>
+      <div class="flex gap-2 items-center justify-center" style="flex-wrap: wrap; justify-content: center;">
+        <a class="btn btn-primary" href="pages/register.html">Ξεκίνα δωρεάν</a>
+        <a class="btn btn-outline" href="pages/feed.html">Δες αγγελίες</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="features">
+      <div class="feature">
+        <div class="icon">🍲</div>
+        <h3>Μαγείρεψε μία φορά</h3>
+        <p class="muted">Φτιάξε φαγητό σε μεγάλη ποσότητα και κράτησε για σένα. Τα υπόλοιπα τα μοιράζεσαι.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🤝</div>
+        <h3>Βρες κοντινές μερίδες</h3>
+        <p class="muted">Δες σε χάρτη και λίστα τις διαθέσιμες μερίδες κοντά στην πανεπιστημιούπολη.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">⭐</div>
+        <h3>Κέρδισε πόντους</h3>
+        <p class="muted">Πόντος με πόντο, βαθμολογίες και μερίδες: συμμετέχεις στην οικονομία της κοινότητας.</p>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <h2>Πώς δουλεύει;</h2>
+        <ol>
+          <li>Κάνεις εγγραφή — οι νέοι χρήστες ξεκινούν με <strong>5 πόντους</strong>.</li>
+          <li>Ανεβάζεις αγγελία με τίτλο, σημειώσεις, αλλεργιογόνα, σημείο και ώρα παραλαβής.</li>
+          <li>Άλλοι φοιτητές ζητούν μερίδες, εσύ τις εγκρίνεις ή τις απορρίπτεις.</li>
+          <li>Μετά την παραλαβή, ο δέκτης αφήνει αξιολόγηση 1-5 αστέρων.</li>
+          <li>Κερδίζεις πόντους ανάλογα με την εμπειρία που προσφέρεις.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3">
+      <strong>Λογαριασμοί επίδειξης:</strong> Για δοκιμή χρησιμοποιήστε
+      <code>maria / test123</code> (μάγειρας), <code>sofia / test123</code> (νέος καταναλωτής),
+      ή <code>admin / admin123</code> (διαχειριστής).
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  © 2026 UniBite – Διπλωματική εργαστηριακή άσκηση, Τμήμα Μηχανικών Η/Υ &amp; Πληροφορικής, Πανεπιστήμιο Πατρών
+</footer>
+
+<div id="toast-container"></div>
+<script src="js/common.js"></script>
+<script>
+  // Αν ο χρήστης είναι ήδη συνδεδεμένος, δείξε κατάλληλο link στο header
+  UniBite.requireAuthOptional().then(user => {
+    if (user) {
+      const links = document.getElementById('nav-links');
+      links.innerHTML = `
+        <a href="pages/feed.html">Αγγελίες</a>
+        <a href="pages/my-listings.html">Οι αγγελίες μου</a>
+        <a href="pages/inbox.html">Αιτήματα</a>
+        <a href="pages/my-requests.html">Τα αιτήματά μου</a>
+        ${user.role === 'admin' ? '<a href="pages/admin.html">Admin</a>' : ''}
+        <a href="pages/profile.html">Προφίλ</a>
+        <span class="points-badge" title="Πόντοι">★ ${user.points}</span>
+        <button class="btn btn-outline btn-sm" id="logout-btn">Αποσύνδεση</button>
+      `;
+      document.getElementById('logout-btn').addEventListener('click', UniBite.logout);
+    }
+  });
+</script>
+</body>
+</html>
